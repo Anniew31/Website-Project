@@ -55,22 +55,41 @@ async function convertLocationISO(lat, lon) {
 }
 
 // get species name 
+async function getSpecies(region) {
+  var apiURL = `https://apiv3.iucnredlist.org/api/v3/country/getspecies/${region.toString()}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee`;
+
+  try {
+      var response = await fetch(apiURL);
+      var data = await response.json();
+
+      if (data.count > 0 && data.result && data.result.length > 0) {
+          return data.result[0].scientific_name || "Unknown species";  // Ensures it returns a valid string
+      } else {
+          return "No endangered species found here";
+      }
+  } catch (error) {
+      console.error("Error fetching endangered species data:", error);
+      return "Error fetching endangered species data";
+  }
+}
+
+// get AI-generated description
 async function generateDescription(animal) {
-  var prompt = `You are a knowledgeable scientist. Provide information about the species ${animal} in this exact format:  
+  var prompt = `You are a knowledgeable scientist. Provide **brief** information about the species "${animal}" in **exactly** this format:  
 
-  Common Name: [Insert common name]  
-  Scientific Name: [Insert scientific name]  
-  Description: [Provide a concise one-sentence description, including habitat or unique traits.]  
-  Endangerment Reason: [Provide a brief one-sentence explanation of why this species is endangered.]  
-  
-  Only output the requested details. Do NOT include explanations, introductory text, or repeat the input.`;
+  Common Name: [Common name]  
+  Scientific Name: [Scientific name]  
+  Description: [ONE short sentence about habitat or unique traits]  
+  Endangerment Reason: [ONE short sentence explaining why it's endangered]  
 
-  var response = await fetch("http://localhost:3000/generate", {
+  Keep each response **under 15 words**. Do NOT include explanations, extra text, or repeat the input.`;
+
+  var response = await fetch("https://website-project-muvj.onrender.com/generate", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify({ prompt: "Tell me about the Amur Leopard" })
+    body: JSON.stringify({ prompt})
   });
 
   if (!response.ok) {
@@ -81,7 +100,7 @@ async function generateDescription(animal) {
   var data = await response.json();
   
   if (data.choices && data.choices.length > 0) {
-      return data.choices[0].message.content;  // Corrected response extraction
+      return data.choices[0].message.content;  
   } else {
       return "No response from AI.";
   }

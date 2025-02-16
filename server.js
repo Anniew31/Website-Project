@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");  // Add this if needed
+const fetch = require("node-fetch");  
 
-var aiToken = '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'
+var aiToken = "d8cd29824a3779ffd3ff498777cb8a6286b74513a1b5323e586c3832f60f1935";
 
 const app = express();
 app.use(cors());
@@ -12,11 +12,14 @@ app.post("/generate", async (req, res) => {
     const { prompt } = req.body;
 
     try {
-        const response = await fetch("https://api.open-assistant.io/v1/chat/completions", {
+        const response = await fetch("https://api.together.xyz/v1/chat/completions", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Authorization": `Bearer ${aiToken}`,
+                "Content-Type": "application/json" 
+            },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
+                model: "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
                 messages: [{ role: "user", content: prompt }]
             })
         });
@@ -24,7 +27,7 @@ app.post("/generate", async (req, res) => {
         console.log("Response status:", response.status);
 
         if (!response.ok) {
-            const errorText = await response.text();  // Read response as text
+            const errorText = await response.text();  
             console.error("AI API Error:", errorText);
             return res.status(500).json({ error: "AI API request failed.", details: errorText });
         }
