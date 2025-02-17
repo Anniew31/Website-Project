@@ -16,13 +16,52 @@
       crossorigin=""></script>
     <script src="script.js"></script>
   </head>
-
+  
   <body>
-    <h1>Endangered Animals Map</h1>
     <div id="map"></div>
     <script>
       displayMap();
-      generateDescription("Describe a bear in 2 sentences.").then(console.log);
     </script>
+    <body style="background-color: rgb(203, 238, 203);"> </body>
+    <header class="sticky">
+        <h1>Endangered Animal Map</h1>
+    </header>
+
+    <style>
+      .sticky {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background: #399659;
+          color: white;
+          padding: 0px;
+          text-align: center;
+      }
+  
+      body {
+          padding-top: 50px;
+      }
+  </style>
+    <div class="content">
+      <p>Please be patient as the map loads! Kindly allow up to 15 seconds while you wait!</p>
+      <p>In recent years, due to climate change and other various environmental issues, animals have continuously suffered as a result in the changes to their habitats. We hope that by raising awareness on the types of animals out there, change can be done to help these animals!</p>
+      <p>Above you will find a map of endangered animals. Enjoy!</p>
+  </div>
+
+  <div class="charityCases">
+    <h2>Ways to Help</h2>
+      <style>
+        .charityCases {
+          position: center;
+          width: 100%;
+          color: white;
+          text-align: center;
+          background: #6e9f7f;
+        }
+    </style>
+
+    <p>Links to Charity:</p>
+  </div>
   </body>
 </html>
