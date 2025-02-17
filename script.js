@@ -79,10 +79,10 @@ async function generateDescription(animal) {
 
   Common Name: [Common name]  
   Scientific Name: [Scientific name]  
-  Description: [ONE short sentence about habitat or unique traits]  
-  Endangerment Reason: [ONE short sentence explaining why it's endangered]  
+  Description: [ONE sentence about habitat or unique traits]  
+  Endangerment Reason: [ONE sentence explaining why it's endangered]  
 
-  Keep each response **under 15 words**. Do NOT include explanations, extra text, or repeat the input.`;
+  Keep each response **under 20 words**. Do NOT include extra text, or repeat the input. Format extactly like shown above`;
 
   var response = await fetch("https://website-project-muvj.onrender.com/generate", {
     method: "POST",
