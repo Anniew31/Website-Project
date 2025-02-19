@@ -21,17 +21,18 @@ header {
 
 .content {
   margin-top: 30px; 
+  padding: 30px;
   background: rgb(238, 249, 241);
   position: relative;
   z-index: 1002;
 }
 
 .charityCases {
-margin-top: 0px;
-padding: 10px;
-background: rgb(238, 249, 241);
-position: relative;
-z-index: 1002; 
+  margin-top: 0px;
+  padding: 10px;
+  background: rgb(238, 249, 241);
+  position: relative;
+  z-index: 1002; 
 }
 
 #map {
