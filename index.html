@@ -6,7 +6,6 @@
     <title>Endangered Animals Map</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
@@ -19,9 +18,11 @@
   
   <body>
     <div id="map"></div>
+
     <script>
       displayMap();
     </script>
+
     <body style="background-color: rgb(203, 238, 203);"> </body>
     <header class="sticky">
         <h1>Endangered Animal Map</h1>
@@ -44,24 +45,62 @@
       }
   </style>
     <div class="content">
-      <p>Please be patient as the map loads! Kindly allow up to 15 seconds while you wait!</p>
+      <p>Please be patient as the map loads! Kindly allow up to a minute while you wait! It will be slower in the beginning.</p>
       <p>In recent years, due to climate change and other various environmental issues, animals have continuously suffered as a result in the changes to their habitats. We hope that by raising awareness on the types of animals out there, change can be done to help these animals!</p>
       <p>Above you will find a map of endangered animals. Enjoy!</p>
   </div>
 
   <div class="charityCases">
     <h2>Ways to Help</h2>
-      <style>
+    <style>
         .charityCases {
-          position: center;
-          width: 100%;
-          color: white;
-          text-align: center;
-          background: #6e9f7f;
+            position: relative;
+            width: 100%;
+            color: white;
+            text-align: center;
+            background: #6e9f7f;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .charityLogos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .charityLogos a img {
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+        .charityLogos a img:hover {
+            transform: scale(1.1);
         }
     </style>
 
     <p>Links to Charity:</p>
-  </div>
-  </body>
+    <div class="charityLogos">
+        <a href="https://www.worldwildlife.org" target="_blank">
+            <img src="images/WWF_logo.png" alt="World Wildlife Fund">
+        </a>
+        <a href="https://www.nationalgeographic.org/projects/photo-ark/" target="_blank">
+            <img src="images/national_logo.png" alt="National Geographic Photo Ark">
+        </a>
+        <a href="https://www.conservation.org/" target="_blank">
+            <img src="images/CIlogo.jpg" alt="Conservation International">
+        </a>
+        <a href="https://www.wcs.org/" target="_blank">
+            <img src="images/WCS.jpg" alt="Wildlife Conservation Society">
+        </a>
+        <a href="https://www.defenders.org/" target="_blank">
+            <img src="images/defenders_logo.jpeg" alt="Defenders of Wildlife">
+        </a>
+    </div>
+</div>
+
+</body>
+
 </html>
